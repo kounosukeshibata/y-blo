@@ -24,7 +24,7 @@ function classNames(...classes: (string | undefined | null | false)[]): string {
 export default function Navbar() {
   return (
     <Disclosure as="nav">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-0.25 xs:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button*/}
@@ -42,6 +42,7 @@ export default function Navbar() {
             </DisclosureButton>
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+            {/* Logo in Navbar */}
             {/* <div className="flex shrink-0 items-center">
               <img
                 alt="Your Company"
@@ -59,8 +60,8 @@ export default function Navbar() {
                     className={classNames(
                       item.current
                         ? 'bg-gray-900 text-white'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'rounded-md px-3 py-2 text-sm font-medium',
+                        : 'text-gray-600 hover:bg-gray-700 hover:text-white',
+                      'rounded-md px-3 py-2 text-xl font-medium',
                     )}
                   >
                     {item.name}
@@ -70,6 +71,7 @@ export default function Navbar() {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            {/* Button of notification */}
             <button
               type="button"
               className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
@@ -87,7 +89,7 @@ export default function Navbar() {
                   <span className="sr-only">Open user menu</span>
                   <img
                     alt=""
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    src="/assets/profile/yadon-image.png"
                     className="size-8 rounded-full"
                   />
                 </MenuButton>
@@ -127,7 +129,7 @@ export default function Navbar() {
       </div>
 
       <DisclosurePanel className="sm:hidden">
-        <div className="space-y-1 px-2 pt-2 pb-3">
+        <div className="space-y-1 px-2 pt-4 pb-3 max-w-md mx-auto mt-80">
           {navigation.map((item) => (
             <DisclosureButton
               key={item.name}
@@ -137,7 +139,7 @@ export default function Navbar() {
               className={classNames(
                 item.current
                   ? 'bg-gray-900 text-white'
-                  : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  : 'text-gray-600 hover:bg-gray-700 hover:text-white',
                 'block rounded-md px-3 py-2 text-base font-medium',
               )}
             >
