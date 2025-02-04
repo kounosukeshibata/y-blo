@@ -1,13 +1,13 @@
-import Footer from "@/app/_components/footer";
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import cn from "classnames";
-import { ThemeSwitcher } from "./_components/theme-switcher";
+import Footer from '@/app/_components/footer'
+import { CMS_NAME, HOME_OG_IMAGE_URL } from '@/lib/constants'
+import cn from 'classnames'
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import { ThemeSwitcher } from './_components/theme-switcher'
 
-import "./globals.css";
+import './globals.css'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: `Next.js Blog Example with ${CMS_NAME}`,
@@ -15,12 +15,12 @@ export const metadata: Metadata = {
   openGraph: {
     images: [HOME_OG_IMAGE_URL],
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
@@ -56,14 +56,24 @@ export default function RootLayout({
         />
         <meta name="theme-color" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lusitana:wght@400;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Teko&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body
-        className={cn(inter.className, "dark:bg-slate-900 dark:text-slate-400")}
+        className={cn(inter.className, 'dark:bg-slate-900 dark:text-slate-400')}
       >
         <ThemeSwitcher />
         <div className="min-h-screen">{children}</div>
         <Footer />
       </body>
     </html>
-  );
+  )
 }
