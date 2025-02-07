@@ -8,24 +8,38 @@ const Page = async () => {
   const sortedPostData: Article[] = getSortedPostsData(allPostsData)
   console.log('ヒーローポストを取得')
 
+  const joinedTopicsPostData = sortedPostData.map((data) =>
+    Array.isArray(data.topics)
+      ? {
+          ...data,
+          topics: data.topics.join(', '),
+        }
+      : {
+          ...data,
+          topics: data.topics,
+        },
+  )
+
   return (
     <main>
       <Container>
-        <h1 className="text-5xl md:text-5xl lg:text-5xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left">
+        <h1 className="mt-10 text-5xl md:text-5xl lg:text-5xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left">
           ブログ一覧ページ
         </h1>
-        {sortedPostData ? (
-          sortedPostData.map((article) => {
+        {joinedTopicsPostData ? (
+          joinedTopicsPostData.map((article) => {
             return (
               <Link
                 href={`/blog/posts/${article.id}`}
                 className="hover:underline"
               >
-                <ul>
-                  <li>{article.emoji}</li>
-                  <li>{article.title}</li>
-                  <li>{article.topics}</li>
-                  <li>{article.published_at}</li>
+                <ul className="my-5">
+                  <li>
+                    {article.emoji}
+                    {article.title}
+                  </li>
+                  <li>Topics：{article.topics}</li>
+                  <li>投稿日：{article.published_at}</li>
                 </ul>
               </Link>
             )

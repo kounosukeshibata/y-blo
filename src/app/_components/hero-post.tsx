@@ -19,18 +19,19 @@ export function HeroPost({ id, title, emoji, topics, published_at }: Props) {
           src={'/assets/profile/yadon-image.png'}
           id={id}
         />
-        {emoji && <span className="ml-2 text-3xl">{emoji}</span>}
       </div>
       <div className="md:grid md:grid-cols-1 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
         <div>
-          <h3 className="mb-4 text-4xl lg:text-5xl leading-tight">
+          <h1 className="mb-10 text-3xl">最新のブログ記事</h1>
+          <p className="mb-4 text-3xl lg:text-4xl leading-tight">
+            {emoji && <span className="ml-2 text-3xl">{emoji}</span>}
             <Link href={`/posts/${id}`} className="hover:underline">
               {title}
             </Link>
             {topics && (
-              <p className="ml-2 mt-4 text-3xl">キーワード：{topics}</p>
+              <p className="ml-2 mt-1 text-2xl">キーワード：{topics}</p>
             )}
-          </h3>
+          </p>
           <div className="mb-4 md:mb-0 text-lg">
             <DateFormatter dateString={published_at} />
           </div>
