@@ -1,5 +1,10 @@
 import { fetchGithubArticles, fetchGithubRepoMeta } from '@/lib/getArticle'
 import { Article } from '@/types/Article'
+import htmlKatex from 'rehype-katex'
+import { remark } from 'remark'
+import gfm from 'remark-gfm'
+import html from 'remark-html'
+import math from 'remark-math'
 import { ArticleResponse } from '../types/Response'
 
 export async function getPostsData() {
@@ -51,4 +56,18 @@ export function getSortedPostsData(articles: Article[]): Article[] {
     })
   }
   return []
+}
+
+export async function getHtmlContent(article: Article) {
+  const processedContent = await remark()
+    .use(math)
+    .use(htmlKatex)
+    .use(html)
+    .use(gfm)
+    .process(article.content)
+  const contentHtml = processedContent.toString()
+  return {
+    ...article,
+    content: contentHtml,
+  }
 }

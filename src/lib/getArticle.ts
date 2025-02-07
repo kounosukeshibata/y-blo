@@ -33,9 +33,7 @@ export async function fetchGithubArticles(url: string, fileName: string) {
       console.log('データをutf-8に変換')
       const matterResult = matter(fileContents)
       console.log('データをmd形式に変換')
-      console.log(matterResult)
 
-      // 後で書き直し
       if (!matterResult.data.published) {
         return
       }
