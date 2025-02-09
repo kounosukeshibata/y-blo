@@ -25,7 +25,7 @@ export function HeroPost({ id, title, emoji, topics, published_at }: Props) {
           <h1 className="mb-10 text-3xl">最新のブログ記事</h1>
           <p className="mb-4 text-3xl lg:text-4xl leading-tight">
             {emoji && <span className="ml-2 text-3xl">{emoji}</span>}
-            <Link href={`/posts/${id}`} className="hover:underline">
+            <Link href={`/blog/posts/${id}`} className="hover:underline">
               {title}
             </Link>
             {topics && (

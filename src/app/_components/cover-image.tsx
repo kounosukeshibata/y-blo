@@ -1,6 +1,5 @@
 import cn from 'classnames'
 import Image from 'next/image'
-import Link from 'next/link'
 
 type Props = {
   title: string
@@ -20,17 +19,7 @@ const CoverImage = ({ title, src, id }: Props) => {
       height={630}
     />
   )
-  return (
-    <div className="sm:mx-0">
-      {id ? (
-        <Link href={`/posts/${id}`} aria-label={title}>
-          {image}
-        </Link>
-      ) : (
-        image
-      )}
-    </div>
-  )
+  return <div className="sm:mx-0">{image}</div>
 }
 
 export default CoverImage

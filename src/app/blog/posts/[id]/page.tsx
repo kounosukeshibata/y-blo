@@ -1,23 +1,34 @@
 import { PostBody } from '@/app/_components/post-body'
 import { PostHeader } from '@/app/_components/post-header'
-import { getHtmlContent, getPostsData } from '@/lib/posts'
+import markdownToHtml from '@/lib/markdownToHtml'
+import { getPostsData } from '@/lib/posts'
+import { notFound } from 'next/navigation'
 import 'prismjs/themes/prism.css'
 
-const Page = async ({ params }: { params: { id: string } }) => {
+type Params = {
+  params: Promise<{
+    id: string
+  }>
+}
+
+const Page = async (props: Params) => {
   const allPosts = await getPostsData()
+  const params = await props.params
   const post = allPosts.find((article) => article.id === params.id)
 
   if (!post) {
-    return <div>Post not found</div>
+    return notFound()
   }
-  const convertedPost = await getHtmlContent(post)
 
-  const { title, topics, published_at, content, emoji } = convertedPost
+  const { title, topics, published_at, emoji } = post
+  const convertedContent = await markdownToHtml(post.content || '')
 
   return (
     <div>
-      <PostHeader title={title} published_at={published_at} emoji={emoji} />
-      <PostBody content={content} />
+      <article className="mb-32">
+        <PostHeader title={title} published_at={published_at} emoji={emoji} />
+        <PostBody content={convertedContent} />
+      </article>
     </div>
   )
 }

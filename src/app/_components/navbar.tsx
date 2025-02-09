@@ -1,3 +1,5 @@
+import NavLinks from '@/app/_components/nav-links'
+import NavLinksSmp from '@/app/_components/nav-links-smp'
 import {
   Disclosure,
   DisclosureButton,
@@ -26,7 +28,7 @@ export default function Navbar() {
     <Disclosure as="nav">
       <div className="mx-auto max-w-7xl px-0.25 xs:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
-          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
             {/* Mobile menu button*/}
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset">
               <span className="absolute -inset-0.5" />
@@ -41,7 +43,8 @@ export default function Navbar() {
               />
             </DisclosureButton>
           </div>
-          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+
+          <div className="flex flex-1 items-center justify-center lg:items-stretch lg:justify-start">
             {/* Logo in Navbar */}
             {/* <div className="flex shrink-0 items-center">
               <img
@@ -50,27 +53,14 @@ export default function Navbar() {
                 className="h-8 w-auto"
               />
             </div> */}
-            <div className="hidden sm:ml-6 sm:block">
+            <div className="hidden lg:ml-6 lg:block">
               <div className="flex space-x-4">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    aria-current={item.current ? 'page' : undefined}
-                    className={classNames(
-                      item.current
-                        ? 'bg-gray-900 text-white'
-                        : 'text-gray-600 hover:bg-gray-700 hover:text-white',
-                      'rounded-md px-3 py-2 text-xl font-medium',
-                    )}
-                  >
-                    {item.name}
-                  </a>
-                ))}
+                <NavLinks navigation={navigation} />
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+
+          <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:static lg:inset-auto lg:ml-6 lg:pr-0">
             {/* Button of notification */}
             <button
               type="button"
@@ -128,24 +118,10 @@ export default function Navbar() {
         </div>
       </div>
 
-      <DisclosurePanel className="sm:hidden">
-        <div className="space-y-1 px-2 pt-4 pb-3 max-w-md mx-auto mt-80">
-          {navigation.map((item) => (
-            <DisclosureButton
-              key={item.name}
-              as="a"
-              href={item.href}
-              aria-current={item.current ? 'page' : undefined}
-              className={classNames(
-                item.current
-                  ? 'bg-gray-900 text-white'
-                  : 'text-gray-600 hover:bg-gray-700 hover:text-white',
-                'block rounded-md px-3 py-2 text-base font-medium',
-              )}
-            >
-              {item.name}
-            </DisclosureButton>
-          ))}
+      {/* スマホのナビゲーション */}
+      <DisclosurePanel className="lg:hidden">
+        <div className="relative z=50 space-y-1 px-2 pt-4 pb-3 max-w-md mx-auto mt-80">
+          <NavLinksSmp navigation={navigation} />
         </div>
       </DisclosurePanel>
     </Disclosure>
