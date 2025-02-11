@@ -51,7 +51,7 @@ const Navbar = React.memo(() => {
           {/* スマホのナビゲーション */}
           {isOpen && (
             <div className="lg:hidden relative">
-              <div className="bg-red-200 absolute -top-30 -left-20 z-50 space-y-1 px-6 pt-4 pb-3 max-w-md mx-auto mt-10">
+              <div className="bg-red-200 absolute -top-30 -left-20 z-50 space-y-1 px-7 pt-6 pb-10 max-w-md mx-auto mt-8">
                 <NavLinksSmp
                   navigation={navigation}
                   closeNavbar={closeNavbar}
