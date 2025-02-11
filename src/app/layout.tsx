@@ -64,10 +64,6 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin=""
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lusitana:wght@400;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Teko&display=swap"
-          rel="stylesheet"
-        />
       </head>
       <body
         className={cn(inter.className, 'dark:bg-slate-900 dark:text-slate-400')}

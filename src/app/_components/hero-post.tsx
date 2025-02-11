@@ -19,6 +19,7 @@ export function HeroPost({ id, title, emoji, topics, published_at }: Props) {
   const handleLinkClick = () => {
     closeNavbar()
   }
+
   return (
     <section>
       <div className="mt-10 mb-20 md:mt-20 md:mb-16">
@@ -28,14 +29,14 @@ export function HeroPost({ id, title, emoji, topics, published_at }: Props) {
           id={id}
         />
       </div>
-      <div className="md:grid md:grid-cols-1 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
+      <div className="mb-20 md:mb-28 md:grid md:grid-cols-1 md:gap-x-16 lg:gap-x-8">
         <div>
-          <h1 className="mb-5 md:mb-10 text-2xl lg:text-3xl">
+          <h1 className="mb-5 text-2xl md:mb-10 lg:text-3xl">
             最新のブログ記事
           </h1>
           <h3
             onClick={handleLinkClick}
-            className="mb-4 text-1xl md:text-3xl lg:text-4xl leading-tight"
+            className="mb-4 leading-tight text-1xl md:text-3xl lg:text-4xl"
           >
             {emoji && (
               <span className="ml-2 text-1xl md:text-3xl">{emoji}</span>
@@ -49,7 +50,7 @@ export function HeroPost({ id, title, emoji, topics, published_at }: Props) {
               </p>
             )}
           </h3>
-          <div className="mb-4 md:mb-0 text-lg">
+          <div className="mb-4 text-lg md:mb-0">
             <DateFormatter dateString={published_at} />
           </div>
         </div>

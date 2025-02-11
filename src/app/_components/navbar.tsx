@@ -23,14 +23,14 @@ const Navbar = React.memo(() => {
 
   useEffect(() => {
     closeNavbar()
-  }, [pathname])
+  }, [pathname, closeNavbar])
 
   return (
     <Disclosure as="nav">
       <div className="mx-auto max-w-7xl px-0.25 xs:px-6 lg:px-8 pr-6">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
-            {/* Mobile menu button*/}
+            {/* Mobile menu button */}
             <DisclosureButton
               onClick={toggleNavbar}
               className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset"
@@ -39,11 +39,11 @@ const Navbar = React.memo(() => {
               <span className="sr-only">Open main menu</span>
               <Bars3Icon
                 aria-hidden="true"
-                className={`h-6 w-6 ${isOpen ? 'hidden' : 'block'}`} // isOpenがfalseのとき表示
+                className={`size-6 ${isOpen ? 'hidden' : 'block'}`} // isOpenがfalseのとき表示
               />
               <XMarkIcon
                 aria-hidden="true"
-                className={`text-gray-800 h-6 w-6 ${isOpen ? 'block' : 'hidden'}`} // isOpenがtrueのとき表示
+                className={`size-6 text-gray-800 ${isOpen ? 'block' : 'hidden'}`} // isOpenがtrueのとき表示
               />
             </DisclosureButton>
           </div>
@@ -51,7 +51,7 @@ const Navbar = React.memo(() => {
           {/* スマホのナビゲーション */}
           {isOpen && (
             <div className="lg:hidden relative">
-              <div className="bg-red-200 absolute -top-30 -left-20 z-50 space-y-1 px-7 pt-6 pb-10 max-w-md mx-auto mt-8">
+              <div className="absolute -top-30 -left-20 z-50 bg-red-200 space-y-1 px-7 pt-6 pb-10 max-w-md mx-auto mt-8">
                 <NavLinksSmp
                   navigation={navigation}
                   closeNavbar={closeNavbar}
@@ -90,7 +90,7 @@ const Navbar = React.memo(() => {
                   <img
                     alt=""
                     src="/assets/profile/yadon-image.png"
-                    className="size-8 rounded-full"
+                    className="h-8 w-8 rounded-full"
                   />
                 </MenuButton>
               </div>
@@ -130,6 +130,7 @@ const Navbar = React.memo(() => {
     </Disclosure>
   )
 })
+
 Navbar.displayName = 'Navbar'
 
 export default Navbar
