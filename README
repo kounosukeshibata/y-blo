@@ -1,0 +1,11 @@
+y-blo
+
+- build and start
+pnpm run dev
+
+- Git-Flow model
+main : main branch for production
+develop : main branch for development
+release : branch(from develop) for doing release work
+feature/X : branch for adding features and making corrections
+feature/X_Y : each task for branch of feature/X
