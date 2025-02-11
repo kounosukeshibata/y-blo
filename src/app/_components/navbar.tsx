@@ -1,15 +1,12 @@
+'use client'
+
 import NavLinks from '@/app/_components/nav-links'
 import NavLinksSmp from '@/app/_components/nav-links-smp'
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-} from '@headlessui/react'
+import { useNavbar } from '@/app/_context/NavbarContext'
+import { Disclosure, DisclosureButton } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { usePathname } from 'next/navigation'
+import React, { useEffect } from 'react'
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -19,40 +16,53 @@ const navigation = [
   { name: 'Contact', href: '/contact', current: false },
 ]
 
-function classNames(...classes: (string | undefined | null | false)[]): string {
-  return classes.filter(Boolean).join(' ')
-}
+const Navbar = React.memo(() => {
+  const pathname = usePathname()
+  const { isOpen, toggleNavbar, closeNavbar } = useNavbar()
+  console.log('Navbar_isOpenの確認:', isOpen)
 
-export default function Navbar() {
+  useEffect(() => {
+    closeNavbar()
+  }, [pathname])
+
   return (
     <Disclosure as="nav">
-      <div className="mx-auto max-w-7xl px-0.25 xs:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-0.25 xs:px-6 lg:px-8 pr-6">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
             {/* Mobile menu button*/}
-            <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset">
+            <DisclosureButton
+              onClick={toggleNavbar}
+              className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset"
+            >
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
               <Bars3Icon
                 aria-hidden="true"
-                className="block size-6 group-data-open:hidden"
+                className={`h-6 w-6 ${isOpen ? 'hidden' : 'block'}`} // isOpenがfalseのとき表示
               />
               <XMarkIcon
                 aria-hidden="true"
-                className="hidden size-6 group-data-open:block"
+                className={`text-gray-800 h-6 w-6 ${isOpen ? 'block' : 'hidden'}`} // isOpenがtrueのとき表示
               />
             </DisclosureButton>
           </div>
 
+          {/* スマホのナビゲーション */}
+          {isOpen && (
+            <div className="lg:hidden relative">
+              <div className="absolute -top-30 -left-20 z-50 space-y-1 px-2 pt-4 pb-3 max-w-md mx-auto mt-10">
+                <NavLinksSmp
+                  navigation={navigation}
+                  closeNavbar={closeNavbar}
+                  isOpen={isOpen}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* PCのナビゲーション */}
           <div className="flex flex-1 items-center justify-center lg:items-stretch lg:justify-start">
-            {/* Logo in Navbar */}
-            {/* <div className="flex shrink-0 items-center">
-              <img
-                alt="Your Company"
-                src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
-              />
-            </div> */}
             <div className="hidden lg:ml-6 lg:block">
               <div className="flex space-x-4">
                 <NavLinks navigation={navigation} />
@@ -60,8 +70,8 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:static lg:inset-auto lg:ml-6 lg:pr-0">
-            {/* Button of notification */}
+          <div className="absolute inset-y-0 right-0 flex items-center lg:static lg:inset-auto lg:ml-6 lg:pr-0">
+            {/* notificationボタン */}
             <button
               type="button"
               className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
@@ -72,7 +82,7 @@ export default function Navbar() {
             </button>
 
             {/* Profile dropdown */}
-            <Menu as="div" className="relative ml-3">
+            {/* <Menu as="div" className="relative ml-3">
               <div>
                 <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
                   <span className="absolute -inset-1.5" />
@@ -113,17 +123,12 @@ export default function Navbar() {
                   </a>
                 </MenuItem>
               </MenuItems>
-            </Menu>
+            </Menu> */}
           </div>
         </div>
       </div>
-
-      {/* スマホのナビゲーション */}
-      <DisclosurePanel className="lg:hidden">
-        <div className="relative z=50 space-y-1 px-2 pt-4 pb-3 max-w-md mx-auto mt-80">
-          <NavLinksSmp navigation={navigation} />
-        </div>
-      </DisclosurePanel>
     </Disclosure>
   )
-}
+})
+
+export default Navbar

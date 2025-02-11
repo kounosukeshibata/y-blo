@@ -4,11 +4,10 @@ import { getPostsData, getSortedPostsData } from '@/lib/posts'
 import { Article } from '@/types/Article'
 
 export default async function Index() {
+  console.log('/page.tsx')
   const allPostsData = await getPostsData()
   const sortedPostData: Article[] = getSortedPostsData(allPostsData)
   const heroPost = sortedPostData[0]
-  console.log('ヒーローポストを取得')
-
   const topicsDisplay = Array.isArray(heroPost.topics)
     ? heroPost.topics.join(', ')
     : heroPost.topics
@@ -18,6 +17,7 @@ export default async function Index() {
       <Container>
         {heroPost ? (
           <HeroPost
+            key={heroPost.id}
             id={heroPost.id}
             title={heroPost.title}
             emoji={heroPost.emoji}

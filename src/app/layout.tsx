@@ -1,11 +1,11 @@
-import Footer from '@/app/_components/footer'
-import Header from '@/app/_components/header'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '@/lib/constants'
 import cn from 'classnames'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { ThemeSwitcher } from './_components/theme-switcher'
 
+import Footer from '@/app/_components/footer'
+import Header from '@/app/_components/header'
+import { NavbarProvider } from '@/app/_context/NavbarContext'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -23,6 +23,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  console.log('layout.tsx')
   return (
     <html lang="en">
       <head>
@@ -67,13 +68,19 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Lusitana:wght@400;700&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Teko&display=swap"
           rel="stylesheet"
         />
+        <script
+          src="https://kit.fontawesome.com/56a186b46e.js"
+          crossOrigin="anonymous"
+        ></script>
       </head>
       <body
         className={cn(inter.className, 'dark:bg-slate-900 dark:text-slate-400')}
       >
-        <ThemeSwitcher />
-        <Header />
-        <div className="min-h-screen">{children}</div>
+        {/* <ThemeSwitcher /> */}
+        <NavbarProvider>
+          <Header />
+          <div className="min-h-screen">{children}</div>
+        </NavbarProvider>
         <Footer />
       </body>
     </html>
