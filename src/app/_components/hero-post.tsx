@@ -21,10 +21,10 @@ export function HeroPost({ id, title, emoji, topics, published_at }: Props) {
   }
   return (
     <section>
-      <div className="mb-8 md:mb-16">
+      <div className="mt-10 mb-20 md:mt-20 md:mb-16">
         <CoverImage
           title={title}
-          src={'/assets/profile/yadon-image.png'}
+          src={'/assets/profile/shimaenaga.png'}
           id={id}
         />
       </div>

@@ -1,4 +1,6 @@
 import Container from '@/app/_components/container'
+import MailContact from '@/app/_components/MailContact'
+import OthersContact from '@/app/_components/OthersContact'
 
 const Page = () => {
   return (
