@@ -1,30 +1,33 @@
-import Container from "@/app/_components/container";
-import { HeroPost } from "@/app/_components/hero-post";
-import { Intro } from "@/app/_components/intro";
-import { MoreStories } from "@/app/_components/more-stories";
-import { getAllPosts } from "@/lib/api";
+import Container from '@/app/_components/container'
+import { HeroPost } from '@/app/_components/hero-post'
+import { getPostsData, getSortedPostsData } from '@/lib/posts'
+import type { Article } from '@/types/Article'
 
-export default function Index() {
-  const allPosts = getAllPosts();
-
-  const heroPost = allPosts[0];
-
-  const morePosts = allPosts.slice(1);
+export default async function Index() {
+  console.log('/page.tsx')
+  const allPostsData = await getPostsData()
+  const sortedPostData: Article[] = getSortedPostsData(allPostsData)
+  const heroPost = sortedPostData[0]
+  const topicsDisplay = Array.isArray(heroPost.topics)
+    ? heroPost.topics.join(', ')
+    : heroPost.topics
 
   return (
     <main>
       <Container>
-        <Intro />
-        <HeroPost
-          title={heroPost.title}
-          coverImage={heroPost.coverImage}
-          date={heroPost.date}
-          author={heroPost.author}
-          slug={heroPost.slug}
-          excerpt={heroPost.excerpt}
-        />
-        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+        {heroPost ? (
+          <HeroPost
+            key={heroPost.id}
+            id={heroPost.id}
+            title={heroPost.title}
+            emoji={heroPost.emoji}
+            topics={topicsDisplay}
+            published_at={heroPost.published_at}
+          />
+        ) : (
+          <p>No hero post available.</p>
+        )}
       </Container>
     </main>
-  );
+  )
 }
