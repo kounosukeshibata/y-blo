@@ -16,7 +16,7 @@ export function Footer() {
               Read Zenn
             </a>
             <a
-              href={`https://github.com/kounosukeshibata/y-blo`}
+              href="https://github.com/kounosukeshibata/y-blo"
               className="mx-3 font-bold hover:underline"
             >
               View on GitHub

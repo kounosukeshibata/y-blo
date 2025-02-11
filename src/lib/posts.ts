@@ -1,11 +1,11 @@
 import { fetchGithubArticles, fetchGithubRepoMeta } from '@/lib/getArticle'
-import { Article } from '@/types/Article'
+import type { Article } from '@/types/Article'
 import htmlKatex from 'rehype-katex'
 import { remark } from 'remark'
 import gfm from 'remark-gfm'
 import html from 'remark-html'
 import math from 'remark-math'
-import { ArticleResponse } from '../types/Response'
+import type { ArticleResponse } from '../types/Response'
 
 export async function getPostsData() {
   const zennArticlesMetaData: ArticleResponse[] = await fetchGithubRepoMeta(

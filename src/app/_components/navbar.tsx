@@ -130,5 +130,6 @@ const Navbar = React.memo(() => {
     </Disclosure>
   )
 })
+Navbar.displayName = 'Navbar'
 
 export default Navbar

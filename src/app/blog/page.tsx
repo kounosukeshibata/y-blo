@@ -1,6 +1,6 @@
 import Container from '@/app/_components/container'
 import { getPostsData, getSortedPostsData } from '@/lib/posts'
-import { Article } from '@/types/Article'
+import type { Article } from '@/types/Article'
 import Link from 'next/link'
 
 const Page = async () => {
@@ -32,6 +32,7 @@ const Page = async () => {
               <Link
                 href={`/blog/posts/${article.id}`}
                 className="hover:underline"
+                key={article.id}
               >
                 <ul className="my-5">
                   <li>

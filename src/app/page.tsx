@@ -1,7 +1,7 @@
 import Container from '@/app/_components/container'
 import { HeroPost } from '@/app/_components/hero-post'
 import { getPostsData, getSortedPostsData } from '@/lib/posts'
-import { Article } from '@/types/Article'
+import type { Article } from '@/types/Article'
 
 export default async function Index() {
   console.log('/page.tsx')

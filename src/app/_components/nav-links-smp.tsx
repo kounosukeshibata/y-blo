@@ -55,5 +55,6 @@ const NavLinksSmp = React.memo(
     )
   },
 )
+NavLinksSmp.displayName = 'NavLinksSmp'
 
 export default NavLinksSmp
