@@ -20,13 +20,13 @@ const Page = async (props: Params) => {
     return notFound()
   }
 
-  const { title, topics, published_at, emoji } = post
+  const { title, published_at } = post
   const convertedContent = await markdownToHtml(post.content || '')
 
   return (
     <div>
       <article className="mb-32">
-        <PostHeader title={title} published_at={published_at} emoji={emoji} />
+        <PostHeader title={title} published_at={published_at} />
         <PostBody content={convertedContent} />
       </article>
     </div>
