@@ -23,7 +23,7 @@ const Page = async () => {
   return (
     <main>
       <Container>
-        <h1 className="mt-10 text-5xl md:text-5xl lg:text-5xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left">
+        <h1 className="mb-12 mt-10 text-5xl font-bold leading-tight tracking-tighter md:leading-none md:text-5xl lg:text-5xl text-center md:text-left">
           ブログ一覧ページ
         </h1>
         {joinedTopicsPostData ? (
@@ -36,8 +36,7 @@ const Page = async () => {
               >
                 <ul className="my-5">
                   <li>
-                    {article.emoji}
-                    {article.title}
+                    {article.emoji} {article.title}
                   </li>
                   <li>Topics：{article.topics}</li>
                   <li>投稿日：{article.published_at}</li>

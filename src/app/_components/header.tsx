@@ -4,11 +4,11 @@ import Link from 'next/link'
 const Header = () => {
   console.log('header.tsx')
   return (
-    <header className="bg-neutral-50 border-b border-neutral-200 dark:bg-slate-800 flex items-center h-18 md:h-22 lg:h-24 px-8 justify-between">
+    <header className="flex items-center justify-between h-18 px-8 border-b border-neutral-200 bg-neutral-50 dark:bg-slate-800 md:h-22 lg:h-24">
       <h1>
         <Link
           href="/"
-          className="hover:underline text-2xl md:text-4xl lg:text-6xl font-logo"
+          className="text-2xl font-logo hover:underline md:text-4xl lg:text-6xl"
         >
           y - b l o
         </Link>

@@ -4,12 +4,11 @@ import DateFormatter from './date-formatter'
 
 type Props = {
   title: string
-  emoji: string
   published_at: string
   // author: Author
 }
 
-export function PostHeader({ title, emoji, published_at }: Props) {
+export function PostHeader({ title, published_at }: Props) {
   return (
     <>
       <PostTitle>{title}</PostTitle>
@@ -19,7 +18,7 @@ export function PostHeader({ title, emoji, published_at }: Props) {
       {/* <div className="mb-8 md:mb-16 sm:mx-0">
         <CoverImage title={title} src={coverImage} />
       </div> */}
-      <div className="max-w-5xl mx-auto">
+      <div className="mx-auto max-w-5xl">
         {/* <div className="block md:hidden mb-6">
           <Avatar name={author.name} picture={author.picture} />
         </div> */}
