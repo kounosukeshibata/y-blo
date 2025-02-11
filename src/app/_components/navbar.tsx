@@ -3,7 +3,7 @@
 import NavLinks from '@/app/_components/nav-links'
 import NavLinksSmp from '@/app/_components/nav-links-smp'
 import { useNavbar } from '@/app/_context/NavbarContext'
-import { Disclosure, DisclosureButton } from '@headlessui/react'
+import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { usePathname } from 'next/navigation'
 import React, { useEffect } from 'react'
@@ -23,7 +23,8 @@ const Navbar = React.memo(() => {
 
   useEffect(() => {
     closeNavbar()
-  }, [pathname, closeNavbar])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname])
 
   return (
     <Disclosure as="nav">
@@ -31,7 +32,7 @@ const Navbar = React.memo(() => {
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
             {/* Mobile menu button */}
-            <DisclosureButton
+            <div
               onClick={toggleNavbar}
               className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset"
             >
@@ -45,7 +46,7 @@ const Navbar = React.memo(() => {
                 aria-hidden="true"
                 className={`size-6 text-gray-800 ${isOpen ? 'block' : 'hidden'}`} // isOpenがtrueのとき表示
               />
-            </DisclosureButton>
+            </div>
           </div>
 
           {/* スマホのナビゲーション */}
