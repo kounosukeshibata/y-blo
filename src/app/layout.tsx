@@ -6,6 +6,7 @@ import { Inter } from 'next/font/google'
 import Footer from '@/app/_components/footer'
 import Header from '@/app/_components/header'
 import { NavbarProvider } from '@/app/_context/NavbarContext'
+import 'zenn-content-css'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
