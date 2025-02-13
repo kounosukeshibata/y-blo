@@ -27,6 +27,8 @@ export function HeroPost({ id, title, emoji, topics, published_at }: Props) {
           title={title}
           src="/assets/profile/shimaenaga.png"
           id={id}
+          width={1300}
+          height={630}
         />
       </div>
       <div className="mb-20 md:mb-28 md:grid md:grid-cols-1 md:gap-x-16 lg:gap-x-8">
