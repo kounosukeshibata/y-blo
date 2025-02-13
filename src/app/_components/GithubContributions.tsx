@@ -19,7 +19,7 @@ const GithubContributions = () => {
       const data = await getContributions('kounosukeshibata')
       setMyContributes(data)
     })()
-  }, [getContributions])
+  }, [])
 
   /**
    * GitHubの草の色を決める関数
@@ -45,13 +45,16 @@ const GithubContributions = () => {
       <div className="flex flex-col items-center">
         {!myContributes
           ? 'XX'
-          : myContributes!.values.reduce((sum, item) => sum + item, 0)}{' '}
+          : myContributes?.values?.reduce((sum, item) => sum + item, 0) ||
+            0}{' '}
         contributions in {YEAR} (from GitHub API)
       </div>
       <div className="flex flex-col items-center">
         {' '}
         {/* 中央寄せ */}
-        {myContributes && myContributes.values.length > 0 ? (
+        {myContributes &&
+        myContributes.values &&
+        myContributes.values.length > 0 ? (
           <div className="flex flex-col w-full">
             {' '}
             {/* 幅を全体に設定 */}
