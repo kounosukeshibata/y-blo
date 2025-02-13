@@ -4,11 +4,13 @@ import { title } from 'process'
 const SelfIntroduction = () => {
   return (
     <div className="mb-20 lg:flex">
-      <div className="mt-10 mb-10 lg:my-40 md:ml-10 md:mr-20 lg:flex-none">
+      <div className="mt-10 mb-10 lg:mt-40 md:ml-10 md:mr-20 lg:flex-none">
         <CoverImage
           title={title}
           src="/assets/profile/yadon-image.png"
           className="w-80 h-80 mx-auto rounded-full"
+          width={1300}
+          height={630}
         />
       </div>
       <div className="lg:mt-20 xl:mt-40 lg:w-100 lg:flex-1 text-xl lg:text-2xl">
