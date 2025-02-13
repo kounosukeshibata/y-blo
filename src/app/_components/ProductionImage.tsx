@@ -1,5 +1,11 @@
-const ProductionImage = () => {
-  return <h3>作品画像</h3>
-}
+// import CoverImage from "@/app/_components/cover-image"
 
-export default ProductionImage
+// const ProductionImage = () => {
+//   return (
+//     <div>
+//       <CoverImage />
+//     </div>
+//   )
+// }
+
+// export default ProductionImage

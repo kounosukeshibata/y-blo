@@ -1,5 +1,5 @@
-const ProductionSummary = () => {
-  return <h3>作品概要</h3>
+const ProductionSummary = ({ summary }: { summary: string }) => {
+  return <h3 className="mt-10">{summary}</h3>
 }
 
 export default ProductionSummary
