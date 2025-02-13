@@ -6,7 +6,7 @@ import type { Article } from '@/types/Article'
 export default async function Index() {
   console.log('/page.tsx')
   const allPostsData = await getPostsData()
-  const sortedPostData: Article[] = getSortedPostsData(allPostsData)
+  const sortedPostData: Article[] = await getSortedPostsData(allPostsData)
   const heroPost = sortedPostData[0]
   const topicsDisplay = Array.isArray(heroPost.topics)
     ? heroPost.topics.join(', ')

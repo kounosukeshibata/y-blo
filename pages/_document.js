@@ -9,6 +9,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
             rel="stylesheet"
           />
+          <script src="https://embed.zenn.studio/js/listen-embed-event.js"></script>
           {/* 他のカスタムフォントをここに追加 */}
         </Head>
         <body>
