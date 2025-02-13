@@ -1,5 +1,6 @@
 import { Octokit } from '@octokit/core'
 import dayjs from 'dayjs'
+import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 // レスポンスの型
@@ -28,11 +29,9 @@ export type MyContributes = {
 }
 
 // メインとなる関数
-export async function GET(
-  request: Request,
-  { params }: { params: { userName: string } },
-) {
-  const { userName } = await params
+export async function GET(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams
+  const userName = searchParams.get('userName')
 
   const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN,
@@ -60,22 +59,30 @@ export async function GET(
     }
   `
 
-  const contributions = await octokit.graphql<Contributions>(query, {
-    userName,
-    now,
-    sixMonthBefore,
-  })
+  try {
+    const contributions = await octokit.graphql<Contributions>(query, {
+      userName,
+      now,
+      sixMonthBefore,
+    })
 
-  let contributionCount: number[] = []
-  contributions.user.contributionsCollection.contributionCalendar.weeks.forEach(
-    (week) => {
-      week.contributionDays.forEach((contributionDay) => {
-        contributionCount.push(contributionDay.contributionCount)
-      })
-    },
-  )
+    const contributionCount: number[] = []
+    contributions.user.contributionsCollection.contributionCalendar.weeks.forEach(
+      (week) => {
+        week.contributionDays.forEach((contributionDay) => {
+          contributionCount.push(contributionDay.contributionCount)
+        })
+      },
+    )
 
-  return NextResponse.json({
-    values: contributionCount,
-  })
+    return NextResponse.json({
+      values: contributionCount,
+    })
+  } catch (error) {
+    console.error('Error fetching contributions:', error)
+    return NextResponse.json(
+      { error: 'Failed to fetch contributions' },
+      { status: 500 },
+    )
+  }
 }

@@ -1,4 +1,4 @@
-import { MyContributes } from '@/app/api/contributions/[userName]/route'
+import type { MyContributes } from '@/app/api/contributions/[userName]/route'
 
 export interface Contributions {
   values: number[]

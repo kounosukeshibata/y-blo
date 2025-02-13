@@ -1,6 +1,6 @@
 'use client'
 
-import { MyContributes } from '@/app/api/contributions/[userName]/route'
+import type { MyContributes } from '@/app/api/contributions/[userName]/route'
 import { useContributions } from '@/hooks/useContributes'
 import { useEffect, useState } from 'react'
 
@@ -19,7 +19,7 @@ const GithubContributions = () => {
       const data = await getContributions('kounosukeshibata')
       setMyContributes(data)
     })()
-  }, [])
+  }, [getContributions])
 
   /**
    * GitHubの草の色を決める関数
