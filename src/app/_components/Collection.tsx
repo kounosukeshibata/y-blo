@@ -5,25 +5,28 @@ const Collection = () => {
     <div>
       <div className="lg:flex">
         <Artifacts
-          name="y-blo"
-          imgsrc="/assets/profile/portfoliosite-image.png"
+          title="y-blo"
+          src="/assets/profile/portfoliosite-image.png"
           width={300}
           height={300}
           summary="最初に作成したポートフォリオサイトです"
+          textForModal="Next.jsのApp Routerを使用して個人サイトを作成しました。フロントエンドもバックエンドも両方TypeScriptで実装しています。"
         />
         <Artifacts
-          name="テトリス"
-          imgsrc="/assets/profile/yadon-image.png"
+          title="テトリス"
+          src="/assets/profile/yadon-image.png"
           width={700}
           height={700}
           summary="作成中"
+          textForModal="モーダル表示テスト"
         />
         <Artifacts
-          name="テトリス"
-          imgsrc="/assets/profile/yadon-image.png"
+          title="テトリス"
+          src="/assets/profile/yadon-image.png"
           width={700}
           height={700}
           summary="作成中"
+          textForModal="モーダル表示テスト"
         />
       </div>
     </div>
