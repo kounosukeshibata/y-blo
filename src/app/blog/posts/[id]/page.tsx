@@ -1,9 +1,9 @@
 import { PostBody } from '@/app/_components/post-body'
 import { PostHeader } from '@/app/_components/post-header'
-import markdownToHtml from '@/lib/markdownToHtml'
 import { getPostsData } from '@/lib/posts'
 import { notFound } from 'next/navigation'
-import 'prismjs/themes/prism.css'
+import 'zenn-content-css'
+import markdownToHtml from 'zenn-markdown-html'
 
 type Params = {
   params: Promise<{
@@ -25,7 +25,7 @@ const Page = async (props: Params) => {
 
   return (
     <div>
-      <article className="mb-32">
+      <article className="mb-32 znc">
         <PostHeader title={title} published_at={published_at} />
         <PostBody content={convertedContent} />
       </article>
