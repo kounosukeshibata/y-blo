@@ -1,6 +1,5 @@
 import { Octokit } from '@octokit/core'
 import dayjs from 'dayjs'
-import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 // レスポンスの型
@@ -29,9 +28,14 @@ export type MyContributes = {
 }
 
 // メインとなる関数
-export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams
-  const userName = searchParams.get('userName')
+// export async function GET(request: NextRequest) {
+//   const searchParams = request.nextUrl.searchParams
+//   const userName = searchParams.get('userName')
+export async function GET(
+  request: Request,
+  { params }: { params: Promise<{ userName: string }> },
+) {
+  const { userName } = await params
 
   const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN,
