@@ -73,7 +73,7 @@ export function HeroPost({ id, title, emoji, topics, published_at }: Props) {
         </div>
         <div className="flex justify-end">
           <Link
-            href={`/blog/posts/${id}`}
+            href="/blog"
             className="mb-4 px-3 py-2 bg-sky-100 rounded-xl hover:underline"
           >
             他の記事を読む…
