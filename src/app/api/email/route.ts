@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer'
 import Mail from 'nodemailer/lib/mailer'
 
 export async function POST(request: NextRequest) {
-  const { email, message } = await request.json()
+  const { name, email, subject, message } = await request.json()
 
   const transport = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -14,15 +14,25 @@ export async function POST(request: NextRequest) {
     },
   })
 
-  const mailOption: Mail.Options = {
-    from: process.env.NODEMAILER_EMAIL,
+  const mailData: Mail.Options = {
+    from: email,
     to: process.env.NODEMAILER_EMAIL,
-    subject: `Message from お問い合わせ(${email})`,
-    text: message,
+    subject: `【y-bloへのお問合せ】${name}様より`,
+    text: `「${subject} 」send from ${email}`,
+    html: `
+      <p>【名前】</p>
+      <p>${name}</p>
+      <p>【タイトル】</p>
+      <p>${subject}</p>
+      <p>【メッセージ内容】</p>
+      <p>${message}</p>
+      <p>【メールアドレス】</p>
+      <p>${email}</p>
+    `,
   }
 
   try {
-    await transport.sendMail(mailOption)
+    await transport.sendMail(mailData)
     return NextResponse.json({ message: 'Success!', status: 200 })
   } catch (err) {
     return NextResponse.json({ message: 'Failed!', status: 500 })

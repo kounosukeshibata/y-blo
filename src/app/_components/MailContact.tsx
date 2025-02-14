@@ -7,6 +7,7 @@ const MailContact = () => {
   const router = useRouter()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -18,12 +19,10 @@ const MailContact = () => {
         Accept: 'application/json, text/plain',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, message }),
+      body: JSON.stringify({ name, email, subject, message }),
     }).then((res) => {
-      if (res.status === 200) console.log('メース送信成功')
+      if (res.status === 200) console.log('メール送信成功')
     })
-
-    console.log('お問い合わせ内容を送信完了')
   }
 
   return (
@@ -31,7 +30,7 @@ const MailContact = () => {
       <h2>お問い合わせ</h2>
       <form onSubmit={handleSubmit} className="space-y-10">
         <div>
-          <label>Name:</label>
+          <label>お名前:</label>
           <input
             type="text"
             value={name}
@@ -40,7 +39,7 @@ const MailContact = () => {
           />
         </div>
         <div>
-          <label>Email:</label>
+          <label>メールアドレス:</label>
           <input
             type="email"
             value={email}
@@ -49,7 +48,16 @@ const MailContact = () => {
           />
         </div>
         <div>
-          <label>Message:</label>
+          <label>タイトル:</label>
+          <input
+            type="text"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>メッセージ:</label>
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
