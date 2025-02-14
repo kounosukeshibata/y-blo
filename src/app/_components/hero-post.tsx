@@ -52,7 +52,7 @@ export function HeroPost({ id, title, emoji, topics, published_at }: Props) {
               )}
             </Link>
             {topics && (
-              <p className="flex flex-wrap py-2 mt-4 text-1xl md:text-2xl">
+              <div className="flex flex-wrap py-2 mt-4 text-1xl md:text-2xl">
                 キーワード：
                 {topics.map((topic, index) => {
                   return (
@@ -64,7 +64,7 @@ export function HeroPost({ id, title, emoji, topics, published_at }: Props) {
                     </div>
                   )
                 })}
-              </p>
+              </div>
             )}
           </h3>
           <div className="mt-auto text-lg md:mb-0 self-end">
