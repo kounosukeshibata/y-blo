@@ -21,9 +21,6 @@ const MailContact = () => {
       },
       body: JSON.stringify({ name, email, subject, message }),
     })
-    // .then((res) => {
-    //   if (res.status === 200) console.log('メール送信成功')
-    // })
 
     if (res.status === 200) {
       console.log('メール送信成功')
@@ -64,7 +61,7 @@ const MailContact = () => {
           <label>タイトル :</label>
           <input
             type="text"
-            className="form-control block w-72 sm:w-96 md:w-full"
+            className="form-control block w-72 sm:w-full"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
             required
@@ -74,7 +71,7 @@ const MailContact = () => {
           <label>メッセージ :</label>
           <textarea
             value={message}
-            className="form-control block w-72 sm:w-96 md:w-full"
+            className="form-control block w-72 sm:w-full"
             onChange={(e) => setMessage(e.target.value)}
             required
           ></textarea>
