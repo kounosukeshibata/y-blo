@@ -14,6 +14,19 @@ export async function POST(request: NextRequest) {
     },
   })
 
+  await new Promise((resolve, reject) => {
+    // verify connection configuration
+    transport.verify(function (error, success) {
+      if (error) {
+        console.log(error)
+        reject(error)
+      } else {
+        console.log('Server is ready to take our messages')
+        resolve(success)
+      }
+    })
+  })
+
   const mailData: Mail.Options = {
     from: email,
     to: process.env.NODEMAILER_EMAIL,
@@ -31,12 +44,19 @@ export async function POST(request: NextRequest) {
     `,
   }
 
-  try {
-    await transport.sendMail(mailData)
-    return NextResponse.json({ message: 'Success!', status: 200 })
-  } catch (err) {
-    return NextResponse.json({ message: 'Failed!', status: 500 })
-  }
+  await new Promise((resolve, reject) => {
+    transport.sendMail(mailData, (err, info) => {
+      if (err) {
+        console.error(err)
+        reject(err)
+      } else {
+        console.log(info)
+        resolve(info)
+      }
+    })
+  })
+
+  return NextResponse.json({ status: 'OK' }, { status: 200 })
 }
 
 export async function GET() {
