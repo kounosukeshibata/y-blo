@@ -23,8 +23,8 @@ const Page = async () => {
   return (
     <main>
       <Container>
-        <h1 className="mb-12 mt-10 xl:mx-20 text-5xl font-bold leading-tight tracking-tighter md:leading-none md:text-5xl lg:text-5xl text-center md:text-left">
-          ブログ一覧ページ
+        <h1 className="mb-12 mt-10 xl:mx-20 text-5xl font-mono leading-tight tracking-tighter md:leading-none md:text-5xl lg:text-5xl text-center">
+          ブログ一覧
         </h1>
         <div className="grid grid-col sm:grid-cols-2 lg:grid-cols-3 xl:mx-20">
           {sortedPostData ? (
