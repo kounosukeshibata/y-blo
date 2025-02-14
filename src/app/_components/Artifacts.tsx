@@ -29,7 +29,7 @@ const Artifatcs = ({
   }
 
   return (
-    <div className="m-20 flex-col">
+    <div className="m-10 flex-col">
       <WorkModal
         isOpen={isOpen}
         handleCloseModal={handleCloseModal}

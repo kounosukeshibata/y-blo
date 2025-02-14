@@ -24,7 +24,7 @@ const Page = async (props: Params) => {
   const convertedContent = await markdownToHtml(post.content || '')
 
   return (
-    <div>
+    <div className="px-6">
       <article className="mb-32 znc">
         <PostHeader title={title} published_at={published_at} />
         <PostBody content={convertedContent} />
