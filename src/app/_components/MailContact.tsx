@@ -13,58 +13,76 @@ const MailContact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    await fetch('/api/email', {
+    const res = await fetch('/api/email', {
       method: 'POST',
       headers: {
         Accept: 'application/json, text/plain',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ name, email, subject, message }),
-    }).then((res) => {
-      if (res.status === 200) console.log('メール送信成功')
     })
+    // .then((res) => {
+    //   if (res.status === 200) console.log('メール送信成功')
+    // })
+
+    if (res.status === 200) {
+      console.log('メール送信成功')
+      setName('')
+      setEmail('')
+      setSubject('')
+      setMessage('')
+      router.push('/contact')
+    } else {
+      console.error('メール送信に失敗しました')
+    }
   }
 
   return (
-    <div>
-      <h2>お問い合わせ</h2>
+    <div className="container bg-gray-100 mt-10 py-10 px-5 sm:px-10 lg:px-20 xl:px-40">
       <form onSubmit={handleSubmit} className="space-y-10">
-        <div>
-          <label>お名前:</label>
+        <div className="mb-3">
+          <label>お名前 :</label>
           <input
             type="text"
+            className="form-control block w-48 sm:w-60"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>メールアドレス:</label>
+        <div className="mb-3">
+          <label>メールアドレス :</label>
           <input
             type="email"
+            className="form-control block w-72 sm:w-80 md:w-96"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>タイトル:</label>
+        <div className="mb-3">
+          <label>タイトル :</label>
           <input
             type="text"
+            className="form-control block w-72 sm:w-96 md:w-full"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>メッセージ:</label>
+        <div className="mb-3">
+          <label>メッセージ :</label>
           <textarea
             value={message}
+            className="form-control block w-72 sm:w-96 md:w-full"
             onChange={(e) => setMessage(e.target.value)}
             required
           ></textarea>
         </div>
-        <button type="submit" onClick={() => router.push('/')}>
+        <button
+          type="submit"
+          className="w-16 h-8 text-white bg-gray-700 rounded-lg"
+        >
           送信
         </button>
       </form>
