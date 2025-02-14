@@ -3,7 +3,7 @@ import Artifacts from '@/app/_components/Artifacts'
 const Collection = () => {
   return (
     <div>
-      <div className="lg:flex">
+      <div className="flex flex-col items-center lg:flex-row lg:justify-center lg:space-x-40">
         <Artifacts
           title="y-blo"
           src="/assets/profile/portfoliosite-image.png"
@@ -15,7 +15,7 @@ const Collection = () => {
         <Artifacts
           title="テトリス"
           src="/assets/profile/yadon-image.png"
-          width={700}
+          width={800}
           height={700}
           summary="作成中"
           textForModal="モーダル表示テスト"
@@ -23,7 +23,7 @@ const Collection = () => {
         <Artifacts
           title="テトリス"
           src="/assets/profile/yadon-image.png"
-          width={700}
+          width={800}
           height={700}
           summary="作成中"
           textForModal="モーダル表示テスト"
