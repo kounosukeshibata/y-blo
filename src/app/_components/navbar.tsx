@@ -27,7 +27,7 @@ const Navbar = React.memo(() => {
   }, [pathname])
 
   return (
-    <Disclosure as="nav">
+    <Disclosure as="nav" className="relative z-50">
       <div className="mx-auto max-w-7xl px-0.25 xs:px-6 lg:px-8 pr-6">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
@@ -40,19 +40,20 @@ const Navbar = React.memo(() => {
               <span className="sr-only">Open main menu</span>
               <Bars3Icon
                 aria-hidden="true"
-                className={`size-6 ${isOpen ? 'hidden' : 'block'}`} // isOpenがfalseのとき表示
+                className={`size-8 ${isOpen ? 'hidden' : 'block'}`} // isOpenがfalseのとき表示
               />
               <XMarkIcon
                 aria-hidden="true"
-                className={`size-6 text-gray-800 ${isOpen ? 'block' : 'hidden'}`} // isOpenがtrueのとき表示
+                className={`size-8 text-gray-800 ${isOpen ? 'block' : 'hidden'}`} // isOpenがtrueのとき表示
               />
             </div>
           </div>
 
           {/* スマホのナビゲーション */}
           {isOpen && (
-            <div className="lg:hidden relative">
-              <div className="absolute -top-30 -left-20 z-50 bg-red-200 space-y-1 px-7 pt-6 pb-10 max-w-md mx-auto mt-8">
+            <div className="lg:hidden text-left fixed bg-slate-100 right-0 top-16 w-full h-screen flex flex-col justify-start pt-8 px-3">
+              {/* <div className="absolute top-16 left-0 z-50 w-full bg-red-200 space-y-1 px-7 pt-6 pb-10 mx-auto mt-8"> */}
+              <div className="px-7 pt-6 pb-10">
                 <NavLinksSmp
                   navigation={navigation}
                   closeNavbar={closeNavbar}
@@ -71,7 +72,7 @@ const Navbar = React.memo(() => {
             </div>
           </div>
 
-          <div className="absolute inset-y-0 right-0 flex items-center lg:static lg:inset-auto lg:ml-6 lg:pr-0">
+          <div className="absolute inset-y-0 right-0 flex items-center lg:static lg:inset-auto mr-3 lg:ml-6 lg:pr-0">
             {/* notificationボタン */}
             <button
               type="button"
