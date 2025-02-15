@@ -78,7 +78,7 @@ const MailContact = () => {
         </div>
         <button
           type="submit"
-          className="w-16 h-8 text-white bg-gray-700 rounded-lg"
+          className="w-16 h-8 text-white bg-gray-700 rounded-lg transition-transform transform active:scale-95 active:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
         >
           送信
         </button>
