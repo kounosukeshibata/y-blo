@@ -31,25 +31,25 @@ export default function RootLayout({
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/assets/profile/yadon-image.png"
+          href="/assets/profile/shimaenaga.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/assets/profile/yadon-image.png"
+          href="/assets/profile/shimaenaga.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="/assets/profile/yadon-image.png"
+          href="/assets/profile/shimaenaga.png"
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <link
           rel="mask-icon"
           type="image/png"
-          href="/assets/profile/yadon-image.png"
+          href="/assets/profile/shimaenaga.png"
           color="#000000"
         />
         <link
@@ -72,7 +72,10 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={cn(inter.className, 'dark:bg-slate-900 dark:text-slate-400')}
+        className={cn(
+          inter.className,
+          'mt-28 md:mt-40 dark:bg-slate-900 dark:text-slate-400',
+        )}
       >
         <NavbarProvider>
           <Header />
