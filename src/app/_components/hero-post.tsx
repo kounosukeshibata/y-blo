@@ -21,7 +21,7 @@ export function HeroPost({ id, title, emoji, topics, published_at }: Props) {
   }
 
   return (
-    <section className="flex flex-col mt-28 md:mt-40">
+    <section className="flex flex-col">
       <div className="mb-20 md:mb-16">
         <CoverImage
           title={title}
@@ -31,28 +31,28 @@ export function HeroPost({ id, title, emoji, topics, published_at }: Props) {
           height={630}
         />
       </div>
-      <div className="xl:mx-20 2xl:mx-40 mb-20 md:mb-28 md:grid md:grid-cols-1 md:gap-x-16 lg:gap-x-8">
+      <div className="xl:mt-20 xl:mx-20 2xl:mx-60 mb-20 md:mb-28 md:grid md:grid-cols-1 md:gap-x-16 lg:gap-x-8">
         <h1 className="mb-5 px-5 text-2xl md:mb-10 lg:text-3xl">
           最新のブログ記事
         </h1>
-        <div className="flex flex-col px-5 py-3 mt-5 mb-3 sm:my-5 bg-sky-500/20 rounded-xl">
+        <div className="flex flex-col px-7 md:px-10 py-3 mt-5 mb-3 sm:my-5 bg-sky-500/20 rounded-xl">
           <h3
             onClick={handleLinkClick}
-            className="mt-4 mb-4 leading-tight text-1xl md:text-3xl lg:text-3xl"
+            className="mt-5 mb-10 leading-tight text-1xl md:text-2xl lg:text-2xl"
           >
             <Link
               href={`/blog/posts/${id}`}
               className="mt-2 mb-4 px-3 py-2 bg-white rounded-xl hover:underline"
             >
               {emoji && (
-                <span className="text-1xl md:text-3xl">
+                <span className="text-1xl md:text-2xl">
                   {emoji}
                   {title}
                 </span>
               )}
             </Link>
             {topics && (
-              <div className="flex flex-wrap py-2 mt-4 text-1xl md:text-2xl">
+              <div className="flex flex-wrap py-2 mt-4 text-1xl md:text-xl">
                 キーワード：
                 {topics.map((topic, index) => {
                   return (
