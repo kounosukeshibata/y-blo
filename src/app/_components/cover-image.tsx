@@ -22,7 +22,7 @@ const CoverImage = ({ title, src, width, height, className, id }: Props) => {
       height={height}
     />
   )
-  return <div className="sm:mx-0">{image}</div>
+  return <div className="sm:mx-0 relative z-0">{image}</div>
 }
 
 export default CoverImage
