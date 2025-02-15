@@ -3,36 +3,27 @@ import nodemailer from 'nodemailer'
 import type Mail from 'nodemailer/lib/mailer'
 
 export async function POST(request: NextRequest) {
-  const { name, email, subject, message } = await request.json()
+  try {
+    const { name, email, subject, message } = await request.json()
 
-  const transport = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    auth: {
-      user: process.env.NODEMAILER_EMAIL,
-      pass: process.env.NODEMAILER_PASSWORD,
-    },
-  })
-
-  await new Promise((resolve, reject) => {
-    // verify connection configuration
-    transport.verify(function (error, success) {
-      if (error) {
-        console.log(error)
-        reject(error)
-      } else {
-        console.log('Server is ready to take our messages')
-        resolve(success)
-      }
+    const transport = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.NODEMAILER_EMAIL,
+        pass: process.env.NODEMAILER_PASSWORD,
+      },
     })
-  })
 
-  const mailData: Mail.Options = {
-    from: email,
-    to: process.env.NODEMAILER_EMAIL,
-    subject: `【y-bloへのお問合せ】${name}様より`,
-    text: `「${subject} 」send from ${email}`,
-    html: `
+    await transport.verify()
+
+    const mailData: Mail.Options = {
+      from: email,
+      to: process.env.NODEMAILER_EMAIL,
+      subject: `【y-bloへのお問合せ】${name}様より`,
+      text: `「${subject} 」send from ${email}`,
+      html: `
       <p>【名前】</p>
       <p>${name}</p>
       <p>【タイトル】</p>
@@ -42,21 +33,22 @@ export async function POST(request: NextRequest) {
       <p>【メールアドレス】</p>
       <p>${email}</p>
     `,
+    }
+
+    await transport.sendMail(mailData)
+
+    return NextResponse.json({ status: 'OK' }, { status: 200 })
+  } catch (error) {
+    let errorMessage = 'Unknown error occurred'
+    if (error instanceof Error) {
+      errorMessage = error.message
+    }
+    console.error('メール送信エラー:', error)
+    return NextResponse.json(
+      { status: 'ERROR', message: errorMessage },
+      { status: 500 },
+    )
   }
-
-  await new Promise((resolve, reject) => {
-    transport.sendMail(mailData, (err, info) => {
-      if (err) {
-        console.error(err)
-        reject(err)
-      } else {
-        console.log(info)
-        resolve(info)
-      }
-    })
-  })
-
-  return NextResponse.json({ status: 'OK' }, { status: 200 })
 }
 
 export async function GET() {
