@@ -1,3 +1,4 @@
+import Container from '@/app/_components/container'
 import { PostBody } from '@/app/_components/post-body'
 import { PostHeader } from '@/app/_components/post-header'
 import { getPostsData } from '@/lib/posts'
@@ -24,12 +25,14 @@ const Page = async (props: Params) => {
   const convertedContent = await markdownToHtml(post.content || '')
 
   return (
-    <div className="px-6">
-      <article className="mb-32 znc">
-        <PostHeader title={title} published_at={published_at} />
-        <PostBody content={convertedContent} />
-      </article>
-    </div>
+    <Container>
+      <div className="px-6">
+        <article className="mb-32 znc">
+          <PostHeader title={title} published_at={published_at} />
+          <PostBody content={convertedContent} />
+        </article>
+      </div>
+    </Container>
   )
 }
 
