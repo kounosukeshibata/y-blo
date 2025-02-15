@@ -1,14 +1,14 @@
 {
-  "name": "Next.js",
-  "short_name": "Next.js",
+  "name": "y-blo",
+  "short_name": "y-blo",
   "icons": [
     {
-      "src": "/assets/profile/yadon-image.png",
+      "src": "/assets/profile/shimaenaga.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/assets/profile/yadon-image.png",
+      "src": "/assets/profile/shimaenaga.png",
       "sizes": "512x512",
       "type": "image/png"
     }
