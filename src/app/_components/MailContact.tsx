@@ -15,7 +15,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { init, send } from '@emailjs/browser'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { type SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { z } from 'zod'
 
@@ -60,10 +60,10 @@ const MailContact = () => {
 
       //送信データを定義する
       const params = {
-        name: name,
-        email: email,
-        subject: subject,
-        content: content,
+        name,
+        email,
+        subject,
+        content,
       }
 
       //EmailJSに送信する
