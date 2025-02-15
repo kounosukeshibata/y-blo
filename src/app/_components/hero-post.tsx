@@ -21,7 +21,7 @@ export function HeroPost({ id, title, emoji, topics, published_at }: Props) {
   }
 
   return (
-    <section className="flex flex-col mt-10 md:mt-20">
+    <section className="flex flex-col mt-28 md:mt-40">
       <div className="mb-20 md:mb-16">
         <CoverImage
           title={title}
