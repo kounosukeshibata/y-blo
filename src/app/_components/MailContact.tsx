@@ -101,7 +101,7 @@ const MailContact = () => {
                       />
                     </FormControl>
                     <FormDescription>お名前をお書きください。</FormDescription>
-                    <FormMessage />
+                    <FormMessage className="text-red-500" />
                   </FormItem>
                 )}
               />
@@ -121,7 +121,7 @@ const MailContact = () => {
                     <FormDescription>
                       メールアドレスをお書きください。
                     </FormDescription>
-                    <FormMessage />
+                    <FormMessage className="text-red-500" />
                   </FormItem>
                 )}
               />
@@ -139,7 +139,7 @@ const MailContact = () => {
                       />
                     </FormControl>
                     <FormDescription>件名をお書きください。</FormDescription>
-                    <FormMessage />
+                    <FormMessage className="text-red-500" />
                   </FormItem>
                 )}
               />
@@ -160,7 +160,7 @@ const MailContact = () => {
                     <FormDescription>
                       お問い合わせ内容をお書きください。
                     </FormDescription>
-                    <FormMessage />
+                    <FormMessage className="text-red-500" />
                   </FormItem>
                 )}
               />
