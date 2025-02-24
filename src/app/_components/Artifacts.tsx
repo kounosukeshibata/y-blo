@@ -12,6 +12,7 @@ type ArtProps = {
   height: number
   summary: string
   textForModal: string
+  url: string
 }
 
 const Artifatcs = ({
@@ -21,6 +22,7 @@ const Artifatcs = ({
   height,
   summary,
   textForModal,
+  url,
 }: ArtProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -29,16 +31,25 @@ const Artifatcs = ({
   }
 
   return (
-    <div className="m-10 flex-col">
+    <div className="flex items-center justify-center m-10 flex-col">
       <WorkModal
         isOpen={isOpen}
         handleCloseModal={handleCloseModal}
         title={title}
         src={src}
         textForModal={textForModal}
+        url={url}
+        width={width}
+        height={height}
       />
       <button onClick={() => setIsOpen(true)}>
-        <CoverImage title={title} src={src} width={width} height={height} />
+        <CoverImage
+          title={title}
+          src={src}
+          width={width}
+          height={height}
+          className={`w-[${width}px] h-[${height}px]`}
+        />
       </button>
       <ProductionSummary summary={summary} />
     </div>
