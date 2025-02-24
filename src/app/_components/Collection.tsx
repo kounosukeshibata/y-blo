@@ -6,7 +6,7 @@ const Collection = () => {
       <div className="m-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         <Artifacts
           title="y-blo"
-          src="/assets/profile/portfoliosite-image.png"
+          src="/assets/works/portfoliosite-image.png"
           width={270}
           height={200}
           summary="ポートフォリオサイトです。最初に作成しました。"
