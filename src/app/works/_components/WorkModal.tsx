@@ -7,6 +7,9 @@ type WorkModalProps = {
   title: string
   src: string
   textForModal: string
+  url: string
+  width: number
+  height: number
 }
 
 const WorkModal = ({
@@ -15,15 +18,19 @@ const WorkModal = ({
   title,
   src,
   textForModal,
+  url,
+  width,
+  height,
 }: WorkModalProps) => {
   return (
     <Modal isOpen={isOpen} handleCloseModal={handleCloseModal}>
       <ContentsForModal
         title={title}
         src={src}
-        width={300}
-        height={300}
+        width={width}
+        height={height}
         textForModal={textForModal}
+        url={url}
       />
     </Modal>
   )
